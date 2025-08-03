@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Intern Dashboard Design System */
+
+@layer base {
+  :root {
+    /* Core Colors - Modern fintech palette */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary - Electric Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 217 91% 70%;
+
+    /* Secondary - Purple Accent */
+    --secondary: 262 83% 58%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Success - Green */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 98%;
+
+    /* Warning - Orange */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(262 83% 58%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%) 0%, hsl(142 71% 55%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(240 10% 3.9% / 0.8) 0%, hsl(240 3.7% 15.9% / 0.4) 100%);
+    --gradient-glow: radial-gradient(600px circle at 50% 50%, hsl(217 91% 60% / 0.15), transparent 40%);
+    
+    /* Shadows */
+    --shadow-primary: 0 10px 40px hsl(217 91% 60% / 0.3);
+    --shadow-secondary: 0 10px 40px hsl(262 83% 58% / 0.3);
+    --shadow-glass: 0 8px 32px hsl(240 10% 3.9% / 0.37);
+    
+    /* Animation */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground relative;
+    background: hsl(var(--background));
+    background-image: var(--gradient-glow);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* Glass Card Effect */
+  .glass-card {
+    @apply backdrop-blur-lg bg-white/5 border border-white/10 rounded-xl;
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* Gradient Button */
+  .btn-gradient {
+    @apply relative overflow-hidden rounded-lg px-6 py-3 font-medium text-white transition-all duration-300;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-primary);
+  }
+
+  .btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 50px hsl(217 91% 60% / 0.4);
+  }
+
+  .btn-gradient:before {
+    @apply absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300;
+    content: '';
+  }
+
+  .btn-gradient:hover:before {
+    @apply opacity-100;
+  }
+
+  /* Success Gradient */
+  .btn-success {
+    @apply relative overflow-hidden rounded-lg px-6 py-3 font-medium text-white transition-all duration-300;
+    background: var(--gradient-success);
+    box-shadow: 0 10px 40px hsl(142 71% 45% / 0.3);
+  }
+
+  /* Animated Background */
+  .animated-bg {
+    @apply relative overflow-hidden;
+  }
+
+  .animated-bg:before {
+    @apply absolute inset-0 opacity-30;
+    content: '';
+    background: var(--gradient-primary);
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  /* Leaderboard Row */
+  .leaderboard-row {
+    @apply glass-card p-4 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg;
+  }
+
+  /* Stats Card */
+  .stats-card {
+    @apply glass-card p-6 transition-all duration-300 hover:scale-[1.02];
+  }
+
+  /* Referral Code */
+  .referral-code {
+    @apply glass-card p-4 font-mono text-lg font-bold tracking-wider;
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--primary) / 0.3);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .border-gradient {
+    border-image: var(--gradient-primary) 1;
+  }
+  
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+  
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+  
+  .aspect-portrait {
+    aspect-ratio: 3 / 4;
+  }
+}
